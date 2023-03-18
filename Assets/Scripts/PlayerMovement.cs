@@ -28,8 +28,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerInputActions.Player.Jump.performed += Jump_OnPerformed;
-        _playerInputActions.Player.Jump.canceled += Jump_OnCancelled;
+        _playerInputActions.Player.Jump.performed += HandleJumpPerformed;
+        _playerInputActions.Player.Jump.canceled += HandleJumpCancelled;
         _playerInputActions.Player.Jump.Enable();
     }
 
@@ -39,12 +39,12 @@ public class PlayerMovement : MonoBehaviour
         _playerInputActions.Player.Jump.Disable();
     }
 
-    private void Jump_OnPerformed(InputAction.CallbackContext obj)
+    private void HandleJumpPerformed(InputAction.CallbackContext obj)
     {
         Jump();
     }
         
-    private void Jump_OnCancelled(InputAction.CallbackContext obj)
+    private void HandleJumpCancelled(InputAction.CallbackContext obj)
     {
         _isJumpCancelled = true;
     }
