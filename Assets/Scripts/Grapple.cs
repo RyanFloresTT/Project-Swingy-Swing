@@ -6,7 +6,7 @@ using UnityEngine;
 public class Grapple : MonoBehaviour
 {
 
-    private LineRenderer _lineRenderer;
+    private LineRenderer _grappleRenderer;
     private Vector3 _grapplePoint;
     private PlayerInputActions _playerInputActions;
     private float _maxGrappleDistance = 100f;
@@ -22,7 +22,7 @@ public class Grapple : MonoBehaviour
 
     private void Awake()
     {
-        _lineRenderer = GetComponent<LineRenderer>();
+        _grappleRenderer = GetComponent<LineRenderer>();
         _playerInputActions = new PlayerInputActions();
     }
 

@@ -11,14 +11,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float fallMultiplier;
     [SerializeField] private Transform sphereCheckTransform;
     [SerializeField] private float sphereRadius;
-    [SerializeField] private LayerMask layerMask; 
+    [SerializeField] private LayerMask floorLayer;
+    [SerializeField] private Transform playerForwardOrientation;
+    [SerializeField] private float playerRotationSpeed;
     
     private bool _isJumping;
     private bool _isJumpCancelled;
     private float _jumpTime;
     private PlayerInputActions _playerInputActions;
     private Rigidbody _rb;
-    private bool _isWalking;
+    private bool _isMoving;
 
     private void Awake()
     {
@@ -49,13 +51,18 @@ public class PlayerMovement : MonoBehaviour
         _isJumpCancelled = true;
     }
 
+    private void Start()
+    {
+        _isMoving = false;
+    }
+
     private void Update()
     {
         Move();
         AddJumpTime();
-
-        if (!Physics.CheckSphere(sphereCheckTransform.position, sphereRadius, layerMask)) return;
-        Debug.Log("Hit Floor");
+    
+        // TODO : Make this into a Raycast
+        if (!Physics.CheckSphere(sphereCheckTransform.position, sphereRadius, floorLayer)) return;
         _isJumping = false;
         _isJumpCancelled = false;
     }
@@ -91,20 +98,16 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();
-        Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
-        if (inputVector.x != 0 || inputVector.y != 0)
-        {
-            _isWalking = true;
-        }
-        else
-        {
-            _isWalking = false;
-        }
-        _rb.AddForce(moveDir * moveSpeed);
-    }
+        Vector3 inputDirection = playerForwardOrientation.forward * inputVector.y + playerForwardOrientation.right* inputVector.x;
 
-    public bool IsWalking()
-    {
-        return _isWalking;
+        if (inputVector != Vector2.zero)
+        {
+            transform.forward = Vector3.Slerp(transform.forward, inputDirection.normalized, Time.deltaTime * playerRotationSpeed);
+            _rb.AddForce(inputDirection * moveSpeed);
+            _isMoving = true;
+        } else
+        {
+            _isMoving= false;
+        }
     }
 }
