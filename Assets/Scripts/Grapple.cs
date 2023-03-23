@@ -7,18 +7,18 @@ public class Grapple : MonoBehaviour
 {
 
     private LineRenderer _grappleRenderer;
-    private Vector3 _grapplePoint;
-    private PlayerInputActions _playerInputActions;
-    private float _maxGrappleDistance = 100f;
-    private SpringJoint _playerToGrappleSpring;
-
-    [SerializeField] private Transform cameraTransform;
-    [SerializeField] private Transform player;
-    [SerializeField] private Transform grappleStartPoint;
-    [SerializeField] private LayerMask grappleLayer;
-    [SerializeField] private float springElasticity = 4.5f;
-    [SerializeField] private float springDamper = 7f;
-    [SerializeField] private float springMassScale = 4.5f;
+    private Vector3 _grapplePoint;                               
+    private PlayerInputActions _playerInputActions;              
+    private float _maxGrappleDistance = 100f;                    
+    private SpringJoint _playerToGrappleSpring;                  
+                                                                 
+    [SerializeField] private Transform cameraTransform;          
+    [SerializeField] private Transform player;                   
+    [SerializeField] private Transform grappleStartPoint;        
+    [SerializeField] private LayerMask grappleLayer;             
+    [SerializeField] private float springElasticity = 4.5f;      
+    [SerializeField] private float springDamper = 7f;            
+    [SerializeField] private float springMassScale = 4.5f;       
 
     private void Awake()
     {
