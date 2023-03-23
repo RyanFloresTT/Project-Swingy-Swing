@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -60,11 +61,24 @@ public class PlayerMovement : MonoBehaviour
     {
         Move();
         AddJumpTime();
-    
+        ApplyDownwardForce();
+        CheckIfGrounded();
+    }
+
+    private void CheckIfGrounded()
+    {
         // TODO : Make this into a Raycast
         if (!Physics.CheckSphere(sphereCheckTransform.position, sphereRadius, floorLayer)) return;
         _isJumping = false;
         _isJumpCancelled = false;
+    }
+
+    private void ApplyDownwardForce()
+    {
+        if (_isJumpCancelled && _isJumping)
+        {
+            _rb.AddForce(Vector3.down * fallMultiplier);
+        }
     }
 
     private void AddJumpTime()
@@ -87,27 +101,24 @@ public class PlayerMovement : MonoBehaviour
         _rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
     }
 
-    private void FixedUpdate()
-    {
-        if (_isJumpCancelled && _isJumping)
-        {
-            _rb.AddForce(Vector3.down * fallMultiplier);
-        }
-    }
-
     private void Move()
     {
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();
+        Debug.Log("InputVector : " + inputVector);
         Vector3 inputDirection = playerForwardOrientation.forward * inputVector.y + playerForwardOrientation.right* inputVector.x;
+        Debug.Log("InputDirection : " + inputDirection);    
 
-        if (inputVector != Vector2.zero)
+        if (inputVector.y != 0)
         {
-            transform.forward = Vector3.Slerp(transform.forward, inputDirection.normalized, Time.deltaTime * playerRotationSpeed);
             _rb.AddForce(inputDirection * moveSpeed);
             _isMoving = true;
         } else
         {
             _isMoving= false;
+        }
+        if (inputVector.x != 0)
+        {
+            transform.forward = Vector3.Slerp(transform.forward, inputDirection.normalized, Time.deltaTime * playerRotationSpeed);
         }
     }
 }
