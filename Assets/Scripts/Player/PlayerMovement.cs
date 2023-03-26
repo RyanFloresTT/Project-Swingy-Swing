@@ -104,9 +104,7 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();
-        Debug.Log("InputVector : " + inputVector);
-        Vector3 inputDirection = playerForwardOrientation.forward * inputVector.y + playerForwardOrientation.right* inputVector.x;
-        Debug.Log("InputDirection : " + inputDirection);    
+        Vector3 inputDirection = playerForwardOrientation.forward * inputVector.y + playerForwardOrientation.right* inputVector.x;   
 
         if (inputVector.y != 0)
         {
