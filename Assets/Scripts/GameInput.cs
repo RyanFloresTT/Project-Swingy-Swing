@@ -5,29 +5,42 @@ using UnityEngine.InputSystem;
 public class GameInput : MonoBehaviour
 {
     private PlayerInputActions _playerInputActions;
-    private InputAction _movement;
+
+    private static GameInput _instance = null;
+    public static GameInput Instance
+    {
+        get { return _instance; }
+    }
 
     private void Awake()
     {
+        CheckInstance();
         _playerInputActions = new PlayerInputActions();
+    }
+
+    private void CheckInstance()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        } else
+        {
+            _instance = this;
+        }
     }
 
     private void OnEnable()
     {
-        _movement = _playerInputActions.Player.Movement;
-        _movement.Enable();
+        _playerInputActions.Enable();
     }
     
     private void OnDisable()
     {
-        _movement.Disable();
+        _playerInputActions.Disable();
     }
-
 
     public Vector2 GetMovementVectorNormalized()
     {
-        Vector2 inputVector = _playerInputActions.Player.Movement.ReadValue<Vector2>();
-        inputVector = inputVector.normalized;
-        return inputVector;
+        return _playerInputActions.Player.Movement.ReadValue<Vector2>().normalized;
     }
 }
