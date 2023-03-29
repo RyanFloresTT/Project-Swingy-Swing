@@ -8,17 +8,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private float maxJumpHeight;
     [SerializeField] private float fallMultiplier;
-    [SerializeField] private Transform sphereCheckTransform;
-    [SerializeField] private float sphereRadius;
     [SerializeField] private LayerMask floorLayer;
     [SerializeField] private Transform playerForwardOrientation;
     [SerializeField] private float playerRotationSpeed;
+    [SerializeField] private float isGroundedHeight;
+    [SerializeField] private Transform feetSpace;
     
     private bool _isJumping;
     private PlayerInputActions _playerInputActions;
     private GameInput _gameInput;
     private Rigidbody _rb;
     private bool _isMoving;
+    private bool _isGrounded = true;
 
     private void Awake()
     {
@@ -53,21 +54,39 @@ public class PlayerMovement : MonoBehaviour
     {
         Move();
         ApplyDownwardForce();
+        DoRayCast();
     }
 
     private void ApplyDownwardForce()
     {
-        if (_isJumping)
+        if (_isJumping && !_isGrounded)
         {
             _rb.AddForce(Vector3.down * fallMultiplier);
         }
     }
 
+    private void DoRayCast()
+    {
+        RaycastHit hit;
+        // Does the ray intersect any objects excluding the player layer
+        if (Physics.Raycast(feetSpace.position, transform.TransformDirection(Vector3.down), out hit, isGroundedHeight))
+        {
+            _isGrounded = true;
+        } else
+        {
+            _isGrounded = false;
+        }
+    }
+
     private void Jump()
     {
-        _isJumping = true;
-        float jumpForce = Mathf.Sqrt(maxJumpHeight * -2 * (Physics.gravity.y));
-        _rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+        if (_isGrounded)
+        {
+            _isJumping = true;
+            _rb.velocity = Vector3.zero;
+            float jumpForce = Mathf.Sqrt(maxJumpHeight * -2 * (Physics.gravity.y));
+            _rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+        }
     }
 
     private void Move()
