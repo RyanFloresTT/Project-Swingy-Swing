@@ -1,31 +1,39 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] private Transform player;
-    [SerializeField] private float mouseSensitivity = 2f;
-    private float cameraVerticalRotation = 0f;
+    [SerializeField] Transform playerTransform;
+    [SerializeField] Transform cameraTransform;
+    [SerializeField] float rotationSpeed;
+    private GameInput _gameInput;
 
-    void Start()
+    private void Start()
     {
+        _gameInput = GameInput.Instance;
+
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-
     }
 
-    void Update()
-    { 
-        float inputX = Input.GetAxis("Mouse X") * mouseSensitivity;
-        float inputY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+    private void Update()
+    {
+        RotatePlayer();
+        RotateCamera();
+    }
 
+    private void RotateCamera()
+    {
+        var mouseXRotation = _gameInput.GetMouseYDelta();
+        cameraTransform.Rotate(Vector3.left * Time.deltaTime * rotationSpeed * mouseXRotation);
+    }
 
-        cameraVerticalRotation -= inputY;
-        cameraVerticalRotation = Mathf.Clamp(cameraVerticalRotation, -90f, 90f);
-        transform.localEulerAngles = Vector3.right * cameraVerticalRotation;
-
-        player.Rotate(Vector3.up * inputX);
-
+    private void RotatePlayer()
+    {
+        var mouseXRotation = _gameInput.GetMouseXDelta();
+        playerTransform.Rotate(Vector3.up * Time.deltaTime * rotationSpeed * mouseXRotation);
     }
 }

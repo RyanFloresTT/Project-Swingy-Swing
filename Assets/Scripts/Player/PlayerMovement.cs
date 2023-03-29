@@ -73,9 +73,9 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         Vector2 inputVector = _gameInput.GetMovementVectorNormalized();
-        Vector3 inputDirection = new Vector3(inputVector.x, 0, inputVector.y);
+        Vector3 inputDirection = playerForwardOrientation.forward * inputVector.y + playerForwardOrientation.right * inputVector.x;
 
-        if (inputDirection != Vector3.zero)
+        if (inputVector != Vector2.zero)
         {
             _rb.AddForce(inputDirection * moveSpeed);
             _isMoving = true;

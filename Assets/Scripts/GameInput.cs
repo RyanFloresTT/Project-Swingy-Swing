@@ -43,4 +43,13 @@ public class GameInput : MonoBehaviour
     {
         return _playerInputActions.Player.Movement.ReadValue<Vector2>().normalized;
     }
+
+    public float GetMouseXDelta()
+    {
+        return _playerInputActions.Player.MouseLookX.ReadValue<float>();
+    }
+    public float GetMouseYDelta()
+    {
+        return _playerInputActions.Player.MouseLookY.ReadValue<float>();
+    }
 }

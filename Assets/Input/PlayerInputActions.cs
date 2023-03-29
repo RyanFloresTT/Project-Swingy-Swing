@@ -53,6 +53,24 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MouseLookX"",
+                    ""type"": ""Value"",
+                    ""id"": ""94a329a2-f20b-4105-b2d0-15d17ed8c54d"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MouseLookY"",
+                    ""type"": ""Value"",
+                    ""id"": ""8b5a979d-aa1f-40c3-b3b5-6be362eefe84"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -132,6 +150,28 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Grapple"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""67c07edc-53c1-4bc6-9866-d46cd49214a4"",
+                    ""path"": ""<Mouse>/delta/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseLookX"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2ffb3ba9-038d-40ed-b22f-08d529ea5c96"",
+                    ""path"": ""<Mouse>/delta/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseLookY"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -143,6 +183,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Grapple = m_Player.FindAction("Grapple", throwIfNotFound: true);
+        m_Player_MouseLookX = m_Player.FindAction("MouseLookX", throwIfNotFound: true);
+        m_Player_MouseLookY = m_Player.FindAction("MouseLookY", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -207,6 +249,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Grapple;
+    private readonly InputAction m_Player_MouseLookX;
+    private readonly InputAction m_Player_MouseLookY;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -214,6 +258,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Grapple => m_Wrapper.m_Player_Grapple;
+        public InputAction @MouseLookX => m_Wrapper.m_Player_MouseLookX;
+        public InputAction @MouseLookY => m_Wrapper.m_Player_MouseLookY;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -232,6 +278,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Grapple.started += instance.OnGrapple;
             @Grapple.performed += instance.OnGrapple;
             @Grapple.canceled += instance.OnGrapple;
+            @MouseLookX.started += instance.OnMouseLookX;
+            @MouseLookX.performed += instance.OnMouseLookX;
+            @MouseLookX.canceled += instance.OnMouseLookX;
+            @MouseLookY.started += instance.OnMouseLookY;
+            @MouseLookY.performed += instance.OnMouseLookY;
+            @MouseLookY.canceled += instance.OnMouseLookY;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -245,6 +297,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Grapple.started -= instance.OnGrapple;
             @Grapple.performed -= instance.OnGrapple;
             @Grapple.canceled -= instance.OnGrapple;
+            @MouseLookX.started -= instance.OnMouseLookX;
+            @MouseLookX.performed -= instance.OnMouseLookX;
+            @MouseLookX.canceled -= instance.OnMouseLookX;
+            @MouseLookY.started -= instance.OnMouseLookY;
+            @MouseLookY.performed -= instance.OnMouseLookY;
+            @MouseLookY.canceled -= instance.OnMouseLookY;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -267,5 +325,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnGrapple(InputAction.CallbackContext context);
+        void OnMouseLookX(InputAction.CallbackContext context);
+        void OnMouseLookY(InputAction.CallbackContext context);
     }
 }
