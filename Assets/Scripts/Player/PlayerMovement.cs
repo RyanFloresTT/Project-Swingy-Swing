@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float isGroundedHeight;
     [SerializeField] private Transform feetSpace;
     
-    private bool _isJumping;
     private PlayerInputActions _playerInputActions;
     private GameInput _gameInput;
     private Rigidbody _rb;
@@ -55,11 +54,12 @@ public class PlayerMovement : MonoBehaviour
         Move();
         ApplyDownwardForce();
         DoRayCast();
+        Debug.Log("IsGrounded: " + _isGrounded);
     }
 
     private void ApplyDownwardForce()
     {
-        if (_isJumping && !_isGrounded)
+        if (!_isGrounded)
         {
             _rb.AddForce(Vector3.down * fallMultiplier);
         }
@@ -68,7 +68,6 @@ public class PlayerMovement : MonoBehaviour
     private void DoRayCast()
     {
         RaycastHit hit;
-        // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(feetSpace.position, transform.TransformDirection(Vector3.down), out hit, isGroundedHeight))
         {
             _isGrounded = true;
@@ -82,7 +81,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_isGrounded)
         {
-            _isJumping = true;
             _rb.velocity = Vector3.zero;
             float jumpForce = Mathf.Sqrt(maxJumpHeight * -2 * (Physics.gravity.y));
             _rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);

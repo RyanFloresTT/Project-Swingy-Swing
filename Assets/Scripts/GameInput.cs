@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 public class GameInput : MonoBehaviour
 {
     private PlayerInputActions _playerInputActions;
-
     private static GameInput _instance = null;
     public static GameInput Instance
     {
