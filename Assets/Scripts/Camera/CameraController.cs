@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] private Transform headSpaceCameraPosition;
     [SerializeField] private Transform playerTransform;
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private float rotationSpeed;

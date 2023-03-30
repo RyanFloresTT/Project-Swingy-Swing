@@ -486,9 +486,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.91999984, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 763864730}
   m_Father: {fileID: 1122987961}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 14, y: 0, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
@@ -535,7 +536,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 589f4c6caf444254f9bb638bc007fd8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  headSpaceCameraPosition: {fileID: 1686838511}
   playerTransform: {fileID: 1122987961}
   cameraTransform: {fileID: 330585546}
   rotationSpeed: 20
@@ -732,11 +732,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbc348db0553b3c4ca653ab91ddad6ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  grappleStartPoint: {fileID: 0}
+  player: {fileID: 1122987958}
+  grappleStartPoint: {fileID: 512182261}
   grappleLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
+  grappleRange: 50
+  isDebugOn: 0
 --- !u!1 &539195987
 GameObject:
   m_ObjectHideFlags: 0
@@ -945,6 +947,37 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &763864729
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 763864730}
+  m_Layer: 0
+  m_Name: Direction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &763864730
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763864729}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 330585546}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1028,8 +1061,8 @@ Transform:
   - {fileID: 1375647275}
   - {fileID: 512182261}
   - {fileID: 1686838511}
-  - {fileID: 330585546}
   - {fileID: 1970050546}
+  - {fileID: 330585546}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1189,7 +1222,7 @@ GameObject:
   - component: {fileID: 1952210354}
   - component: {fileID: 1952210353}
   - component: {fileID: 1952210352}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: GrappleRadius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1273,7 +1306,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1122987961}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2085429276
 GameObject:
