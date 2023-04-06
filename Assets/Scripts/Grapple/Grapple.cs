@@ -6,11 +6,9 @@ using UnityEngine;
 
 public class Grapple : MonoBehaviour
 {
-
     private LineRenderer _grappleRenderer;
     private Vector3 _grapplePoint;                               
-    private PlayerInputActions _playerInputActions;              
-    private float _maxGrappleDistance = 100f;                    
+    private PlayerInputActions _playerInputActions;          
     private SpringJoint _playerToGrappleSpring;
     private Camera _mainCamera;
           
@@ -19,6 +17,8 @@ public class Grapple : MonoBehaviour
     [SerializeField] private LayerMask grappleLayer;
     [SerializeField] private float grappleRange;
     [SerializeField] private bool isDebugOn;
+    [SerializeField] private Transform grappleEndPoint;
+    [SerializeField] private float grappleForce;
 
     private void Awake()
     {
@@ -62,17 +62,18 @@ public class Grapple : MonoBehaviour
     private void HandleGrapplePerformed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         RaycastHit hit;
-        if (Physics.Raycast(_mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f)).origin, _mainCamera.transform.forward, grappleRange, grappleLayer))
-        {
-            Debug.Log("Grapple Hit!");
-        }
-        else
-        {
-            Debug.Log("Grapple Hit NOTHING!");
-        }
+        if (!Physics.Raycast(_mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f)).origin, _mainCamera.transform.forward, out hit, grappleRange, grappleLayer)) return;
+        Debug.Log("Grapple Point Found.");
+        GrappleTo(hit.point);
     }
 
     private void HandleGrappleCancelled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
     }
+    private void GrappleTo(Vector3 grapplePoint)
+    {
+        Vector3 direction = (grapplePoint - player.transform.position).normalized;
+        player.GetComponent<Rigidbody>().AddForce(direction * grappleForce, ForceMode.Impulse);
+    }
+
 }
