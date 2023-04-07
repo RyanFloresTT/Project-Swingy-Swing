@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class Grapple : MonoBehaviour
+public class PushBack : MonoBehaviour
 {
     private LineRenderer _grappleRenderer;
     private Vector3 _grapplePoint;                               
@@ -29,14 +29,14 @@ public class Grapple : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerInputActions.Player.Grapple.performed += HandleGrapplePerformed;
-        _playerInputActions.Player.Grapple.canceled += HandleGrappleCancelled;
-        _playerInputActions.Player.Grapple.Enable();
+        _playerInputActions.Player.PullAbility.performed += HandleGrapplePerformed;
+        _playerInputActions.Player.PullAbility.canceled += HandleGrappleCancelled;
+        _playerInputActions.Player.PullAbility.Enable();
     }
 
     private void OnDisable()
     {
-        _playerInputActions.Player.Grapple.Disable();
+        _playerInputActions.Player.PullAbility.Disable();
     }
 
     private void Update()
@@ -73,7 +73,7 @@ public class Grapple : MonoBehaviour
 
     private void GrappleTo(Vector3 grapplePoint)
     {
-        Vector3 direction = (grapplePoint - player.transform.position).normalized;
+        Vector3 direction = -(grapplePoint - player.transform.position).normalized;
         player.GetComponent<Rigidbody>().AddForce(direction * grappleForce, ForceMode.Impulse);
     }
 

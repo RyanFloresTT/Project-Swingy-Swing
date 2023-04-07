@@ -71,6 +71,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""PullAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""01baff8b-8853-478c-a2dd-f5509af2f8b1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -172,6 +181,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""MouseLookY"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b7220bf1-7174-443e-acee-24ee8e21f771"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PullAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -185,6 +205,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Grapple = m_Player.FindAction("Grapple", throwIfNotFound: true);
         m_Player_MouseLookX = m_Player.FindAction("MouseLookX", throwIfNotFound: true);
         m_Player_MouseLookY = m_Player.FindAction("MouseLookY", throwIfNotFound: true);
+        m_Player_PullAbility = m_Player.FindAction("PullAbility", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -251,6 +272,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Grapple;
     private readonly InputAction m_Player_MouseLookX;
     private readonly InputAction m_Player_MouseLookY;
+    private readonly InputAction m_Player_PullAbility;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -260,6 +282,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Grapple => m_Wrapper.m_Player_Grapple;
         public InputAction @MouseLookX => m_Wrapper.m_Player_MouseLookX;
         public InputAction @MouseLookY => m_Wrapper.m_Player_MouseLookY;
+        public InputAction @PullAbility => m_Wrapper.m_Player_PullAbility;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -284,6 +307,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @MouseLookY.started += instance.OnMouseLookY;
             @MouseLookY.performed += instance.OnMouseLookY;
             @MouseLookY.canceled += instance.OnMouseLookY;
+            @PullAbility.started += instance.OnPullAbility;
+            @PullAbility.performed += instance.OnPullAbility;
+            @PullAbility.canceled += instance.OnPullAbility;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -303,6 +329,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @MouseLookY.started -= instance.OnMouseLookY;
             @MouseLookY.performed -= instance.OnMouseLookY;
             @MouseLookY.canceled -= instance.OnMouseLookY;
+            @PullAbility.started -= instance.OnPullAbility;
+            @PullAbility.performed -= instance.OnPullAbility;
+            @PullAbility.canceled -= instance.OnPullAbility;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -327,5 +356,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnGrapple(InputAction.CallbackContext context);
         void OnMouseLookX(InputAction.CallbackContext context);
         void OnMouseLookY(InputAction.CallbackContext context);
+        void OnPullAbility(InputAction.CallbackContext context);
     }
 }
