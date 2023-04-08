@@ -24,7 +24,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Grapple",
+                    "name": "JumpAbiltiy",
                     "type": "Button",
                     "id": "c528c073-90fc-473a-adc3-a8d751316c5f",
                     "expectedControlType": "Button",
@@ -51,7 +51,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "PullAbility",
+                    "name": "RopeAbility",
                     "type": "Button",
                     "id": "01baff8b-8853-478c-a2dd-f5509af2f8b1",
                     "expectedControlType": "Button",
@@ -130,11 +130,11 @@
                 {
                     "name": "",
                     "id": "84ab5c1d-51fd-4052-b169-7cbb747ec28d",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Grapple",
+                    "action": "JumpAbiltiy",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -163,11 +163,11 @@
                 {
                     "name": "",
                     "id": "b7220bf1-7174-443e-acee-24ee8e21f771",
-                    "path": "<Keyboard>/e",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "PullAbility",
+                    "action": "RopeAbility",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

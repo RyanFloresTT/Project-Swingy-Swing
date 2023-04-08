@@ -4,16 +4,13 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class Grapple : MonoBehaviour
+public class RopeAbility : MonoBehaviour
 {
-    private LineRenderer _grappleRenderer;
-    private Vector3 _grapplePoint;                               
-    private PlayerInputActions _playerInputActions;          
-    private SpringJoint _playerToGrappleSpring;
+    private PlayerInputActions _playerInputActions;
     private Camera _mainCamera;
-          
-    [SerializeField] private GameObject player;                   
-    [SerializeField] private Transform grappleStartPoint;        
+
+    [SerializeField] private GameObject player;
+    [SerializeField] private Transform grappleStartPoint;
     [SerializeField] private LayerMask grappleLayer;
     [SerializeField] private float grappleRange;
     [SerializeField] private bool isDebugOn;
@@ -22,24 +19,30 @@ public class Grapple : MonoBehaviour
 
     private void Awake()
     {
-        _grappleRenderer = GetComponent<LineRenderer>();
         _playerInputActions = new PlayerInputActions();
         _mainCamera = Camera.main;
     }
 
     private void OnEnable()
     {
-        _playerInputActions.Player.Grapple.performed += HandleGrapplePerformed;
-        _playerInputActions.Player.Grapple.canceled += HandleGrappleCancelled;
-        _playerInputActions.Player.Grapple.Enable();
+        _playerInputActions.Player.RopeAbility.performed += HandleGrapplePerformed;
+        _playerInputActions.Player.RopeAbility.canceled += HandleGrappleCancelled;
+        _playerInputActions.Player.RopeAbility.Enable();
     }
 
     private void OnDisable()
     {
-        _playerInputActions.Player.Grapple.Disable();
+        _playerInputActions.Player.RopeAbility.Disable();
     }
 
-    private void Update()
+    private void RopeTo(Vector3 grapplePoint)
+    {
+        Vector3 direction = (grapplePoint - player.transform.position).normalized;
+        player.GetComponent<Rigidbody>().AddForce(direction * grappleForce, ForceMode.Impulse);
+    }
+
+
+private void Update()
     {
         DrawDebugRays();
     }
@@ -64,17 +67,10 @@ public class Grapple : MonoBehaviour
         RaycastHit hit;
         if (!Physics.Raycast(_mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f)).origin, _mainCamera.transform.forward, out hit, grappleRange, grappleLayer)) return;
         Debug.Log("Grapple Point Found.");
-        GrappleTo(hit.point);
+        RopeTo(hit.point);
     }
 
     private void HandleGrappleCancelled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
     }
-
-    private void GrappleTo(Vector3 grapplePoint)
-    {
-        Vector3 direction = (grapplePoint - player.transform.position).normalized;
-        player.GetComponent<Rigidbody>().AddForce(direction * grappleForce, ForceMode.Impulse);
-    }
-
 }

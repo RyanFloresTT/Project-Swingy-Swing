@@ -954,8 +954,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 512182261}
-  - component: {fileID: 512182262}
-  - component: {fileID: 512182263}
   m_Layer: 0
   m_Name: GrappleStart
   m_TagString: Untagged
@@ -978,48 +976,6 @@ Transform:
   m_Father: {fileID: 1122987961}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &512182262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 512182260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbc348db0553b3c4ca653ab91ddad6ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1122987958}
-  grappleStartPoint: {fileID: 512182261}
-  grappleLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  grappleRange: 50
-  isDebugOn: 0
-  grappleEndPoint: {fileID: 0}
-  grappleForce: 100
---- !u!114 &512182263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 512182260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73a61fd3283721d49910f3e473d0ffb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  grappleStartPoint: {fileID: 0}
-  grappleLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  grappleRange: 0
-  isDebugOn: 0
-  grappleEndPoint: {fileID: 0}
-  grappleForce: 0
 --- !u!1 &539195987
 GameObject:
   m_ObjectHideFlags: 0
@@ -1389,6 +1345,7 @@ GameObject:
   - component: {fileID: 1122987961}
   - component: {fileID: 1122987962}
   - component: {fileID: 1122987963}
+  - component: {fileID: 1122987964}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1455,6 +1412,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 1
+--- !u!114 &1122987964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122987958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbc348db0553b3c4ca653ab91ddad6ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpForce: 100
 --- !u!1 &1194873498
 GameObject:
   m_ObjectHideFlags: 0
