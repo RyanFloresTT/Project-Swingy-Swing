@@ -1660,12 +1660,12 @@ SpringJoint:
   m_GameObject: {fileID: 1122987958}
   m_ConnectedBody: {fileID: 67087561}
   m_ConnectedArticulationBody: {fileID: 0}
-  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Anchor: {x: 0, y: 0, z: 5}
   m_AutoConfigureConnectedAnchor: 0
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   serializedVersion: 2
-  m_Spring: 10
-  m_Damper: 0
+  m_Spring: 200
+  m_Damper: 50
   m_MinDistance: 0
   m_MaxDistance: 0
   m_Tolerance: 0.025
