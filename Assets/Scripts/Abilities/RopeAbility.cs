@@ -8,6 +8,7 @@ public class RopeAbility : MonoBehaviour
 {
     private PlayerInputActions _playerInputActions;
     private Camera _mainCamera;
+    private SpringJoint _springJoint;
 
     [SerializeField] private GameObject player;
     [SerializeField] private Transform grappleStartPoint;
@@ -16,6 +17,9 @@ public class RopeAbility : MonoBehaviour
     [SerializeField] private bool isDebugOn;
     [SerializeField] private Transform grappleEndPoint;
     [SerializeField] private float grappleForce;
+
+    [SerializeField] private float springForce = 80f;
+    [SerializeField] private float damperForce = 40f;
 
     private void Awake()
     {
@@ -30,15 +34,31 @@ public class RopeAbility : MonoBehaviour
         _playerInputActions.Player.RopeAbility.Enable();
     }
 
+    private void HandleGrappleCancelled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        if (player.GetComponent<SpringJoint>() == null) return;
+        Destroy(player.GetComponent<SpringJoint>());
+    }
+
     private void OnDisable()
     {
         _playerInputActions.Player.RopeAbility.Disable();
     }
 
-    private void RopeTo(Vector3 grapplePoint)
+    private void RopeTo(RaycastHit raycastHit)
     {
-        Vector3 direction = (grapplePoint - player.transform.position).normalized;
-        player.GetComponent<Rigidbody>().AddForce(direction * grappleForce, ForceMode.Impulse);
+        var ropeBody = raycastHit.rigidbody;
+        if (_springJoint == null)
+        {
+            _springJoint = player.AddComponent<SpringJoint>();
+            _springJoint.connectedBody = ropeBody;
+            _springJoint.spring = springForce;
+            _springJoint.damper = damperForce;
+            _springJoint.autoConfigureConnectedAnchor = false;
+        } else
+        {
+            Debug.Log("More than 1 spring joint on playerl.");
+        }
     }
 
 
@@ -67,10 +87,6 @@ private void Update()
         RaycastHit hit;
         if (!Physics.Raycast(_mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f)).origin, _mainCamera.transform.forward, out hit, grappleRange, grappleLayer)) return;
         Debug.Log("Grapple Point Found.");
-        RopeTo(hit.point);
-    }
-
-    private void HandleGrappleCancelled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
-    {
+        RopeTo(hit);
     }
 }
