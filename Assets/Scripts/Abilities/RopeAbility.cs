@@ -11,15 +11,12 @@ public class RopeAbility : MonoBehaviour
     private SpringJoint _springJoint;
 
     [SerializeField] private GameObject player;
-    [SerializeField] private Transform grappleStartPoint;
     [SerializeField] private LayerMask grappleLayer;
     [SerializeField] private float grappleRange;
     [SerializeField] private bool isDebugOn;
-    [SerializeField] private Transform grappleEndPoint;
-    [SerializeField] private float grappleForce;
 
-    [SerializeField] private float springForce = 80f;
-    [SerializeField] private float damperForce = 40f;
+    [SerializeField] private float springForce = 20f;
+    [SerializeField] private float damperForce = 0f;
 
     private void Awake()
     {

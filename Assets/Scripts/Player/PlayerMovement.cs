@@ -4,8 +4,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float walkSpeed;
+    [SerializeField] private float runSpeed;
     [SerializeField] private float maxJumpHeight;
     [SerializeField] private float fallMultiplier;
     [SerializeField] private LayerMask floorLayer;
@@ -29,20 +30,17 @@ public class PlayerMovement : MonoBehaviour
     private void OnEnable()
     {
         _playerInputActions.Player.Jump.performed += HandleJumpPerformed;
+        _playerInputActions.Player.Sprint.performed += HandleSprintPerformed;
+        _playerInputActions.Player.Sprint.canceled += HandleSprintCancelled;
+
         _playerInputActions.Player.Jump.Enable();
+        _playerInputActions.Player.Sprint.Enable();
     }
-
-
     private void OnDisable()
     {
         _playerInputActions.Player.Jump.Disable();
+        _playerInputActions.Player.Sprint.Disable();
     }
-
-    private void HandleJumpPerformed(InputAction.CallbackContext obj)
-    {
-        Jump();
-    }
-
     private void Start()
     {
         _isMoving = false;
@@ -55,6 +53,22 @@ public class PlayerMovement : MonoBehaviour
         ApplyDownwardForce();
         DoRayCast();
         Debug.Log("IsGrounded: " + _isGrounded);
+    }
+
+    private void HandleSprintCancelled(InputAction.CallbackContext obj)
+    {
+        moveSpeed = walkSpeed;
+    }
+
+    private void HandleSprintPerformed(InputAction.CallbackContext obj)
+    {
+        moveSpeed = runSpeed;
+    }
+
+
+    private void HandleJumpPerformed(InputAction.CallbackContext obj)
+    {
+        Jump();
     }
 
     private void ApplyDownwardForce()

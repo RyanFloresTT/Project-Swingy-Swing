@@ -80,6 +80,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""ffa7cd33-dd4f-40c4-b2cb-898f91de543b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -192,6 +201,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""RopeAbility"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""65d1a620-09e3-48be-8100-69be5c56ea4d"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -206,6 +226,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_MouseLookX = m_Player.FindAction("MouseLookX", throwIfNotFound: true);
         m_Player_MouseLookY = m_Player.FindAction("MouseLookY", throwIfNotFound: true);
         m_Player_RopeAbility = m_Player.FindAction("RopeAbility", throwIfNotFound: true);
+        m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -273,6 +294,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_MouseLookX;
     private readonly InputAction m_Player_MouseLookY;
     private readonly InputAction m_Player_RopeAbility;
+    private readonly InputAction m_Player_Sprint;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -283,6 +305,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @MouseLookX => m_Wrapper.m_Player_MouseLookX;
         public InputAction @MouseLookY => m_Wrapper.m_Player_MouseLookY;
         public InputAction @RopeAbility => m_Wrapper.m_Player_RopeAbility;
+        public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -310,6 +333,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @RopeAbility.started += instance.OnRopeAbility;
             @RopeAbility.performed += instance.OnRopeAbility;
             @RopeAbility.canceled += instance.OnRopeAbility;
+            @Sprint.started += instance.OnSprint;
+            @Sprint.performed += instance.OnSprint;
+            @Sprint.canceled += instance.OnSprint;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -332,6 +358,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @RopeAbility.started -= instance.OnRopeAbility;
             @RopeAbility.performed -= instance.OnRopeAbility;
             @RopeAbility.canceled -= instance.OnRopeAbility;
+            @Sprint.started -= instance.OnSprint;
+            @Sprint.performed -= instance.OnSprint;
+            @Sprint.canceled -= instance.OnSprint;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -357,5 +386,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnMouseLookX(InputAction.CallbackContext context);
         void OnMouseLookY(InputAction.CallbackContext context);
         void OnRopeAbility(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
     }
 }
