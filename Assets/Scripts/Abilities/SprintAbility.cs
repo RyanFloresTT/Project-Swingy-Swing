@@ -7,6 +7,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+[RequireComponent(typeof(Rigidbody))]
 public class SprintAbility : MonoBehaviour
 {
     [SerializeField] private float maxStamina = 100;

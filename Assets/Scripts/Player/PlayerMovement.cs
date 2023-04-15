@@ -118,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_isGrounded)
         {
-            _rb.velocity = Vector3.zero;
+            //_rb.velocity = Vector3.zero;
             float jumpForce = Mathf.Sqrt(maxJumpHeight * -2 * (Physics.gravity.y));
             _rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
         }
