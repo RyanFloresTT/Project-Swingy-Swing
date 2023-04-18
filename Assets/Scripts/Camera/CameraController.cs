@@ -8,7 +8,10 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] private Transform playerTransform;
     [SerializeField] private Transform cameraTransform;
+    [SerializeField] private Transform playerHead;
     [SerializeField] private float rotationSpeed;
+
+    private Transform _mainCameraPosition;
     private GameInput _gameInput;
 
     private void Start()
@@ -22,7 +25,7 @@ public class CameraController : MonoBehaviour
     private void Update()
     {
         RotatePlayer();
-        RotateCamera();
+        RotateCamera();;
     }
 
     private void RotateCamera()

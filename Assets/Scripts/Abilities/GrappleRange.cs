@@ -18,7 +18,7 @@ public class GrappleRange : MonoBehaviour
 
     private void TogglePlayerInRange(Collider other)
     {
-        var player = other.gameObject.GetComponent<PlayerVisual>();
+        var player = other.gameObject.GetComponent<PlayerMovement>();
         if (player == null) return;
         IsPlayerInRange = !IsPlayerInRange;
         OnRangeToggle?.Invoke(this, EventArgs.Empty);
