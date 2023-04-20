@@ -9,6 +9,7 @@ public class Fireball : MonoBehaviour
         if (targetCollider != null)
         {
             targetCollider.TakeDamage(damage);
+            Destroy(gameObject);
         }
     }
 }
