@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, ITakeDamage
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private int maxHealth;
+    private int _currentHealth;
+
+    private void Start()
     {
-        
+        _currentHealth = maxHealth;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Heal(int health)
     {
-        
+        _currentHealth += health;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        _currentHealth -= damage;
     }
 }

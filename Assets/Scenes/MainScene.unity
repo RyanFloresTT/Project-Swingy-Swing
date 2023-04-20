@@ -1578,6 +1578,7 @@ GameObject:
   - component: {fileID: 1122987963}
   - component: {fileID: 1122987964}
   - component: {fileID: 1122987965}
+  - component: {fileID: 1122987966}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1679,6 +1680,19 @@ MonoBehaviour:
   recoveryDelayInSecondsOnDepletion: 4
   staminaThreshold: 30
   staminaBarSlider: {fileID: 792517924}
+--- !u!114 &1122987966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122987958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c0b3fb95cd5ac14c8a0f40ef8ec5367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
 --- !u!1 &1173195379
 GameObject:
   m_ObjectHideFlags: 0
@@ -2852,12 +2866,12 @@ PrefabInstance:
     - target: {fileID: 1401279304254521238, guid: 9962d4835f4fcf74c8a2b32ba325cbc5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.457125
+      value: 0.533
       objectReference: {fileID: 0}
     - target: {fileID: 1401279304254521238, guid: 9962d4835f4fcf74c8a2b32ba325cbc5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.4671004
+      value: -0.851
       objectReference: {fileID: 0}
     - target: {fileID: 1401279304254521238, guid: 9962d4835f4fcf74c8a2b32ba325cbc5,
         type: 3}
