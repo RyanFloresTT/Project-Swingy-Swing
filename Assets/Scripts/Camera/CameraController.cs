@@ -13,6 +13,7 @@ public class CameraController : MonoBehaviour
 
     private Transform _mainCameraPosition;
     private GameInput _gameInput;
+    private Player _player;
 
     private void Start()
     {
@@ -20,6 +21,15 @@ public class CameraController : MonoBehaviour
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        _player = Player.Instance;
+        _player.OnPlayerDeath += HandleOnPlayerDeath;
+    }
+
+    private void HandleOnPlayerDeath(object sender, EventArgs e)
+    {
+        rotationSpeed = 0f;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     private void Update()

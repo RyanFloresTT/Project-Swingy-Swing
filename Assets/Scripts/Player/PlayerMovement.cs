@@ -15,14 +15,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float isGroundedHeight;
     [SerializeField] private Transform feetSpace;
 
+    private float _moveSpeedMultiplier = 1f;
     private float _moveSpeed;
     private PlayerInputActions _playerInputActions;
     private GameInput _gameInput;
     private Rigidbody _rb;
-    private bool _isMoving;
     private bool _canSprint = true;
     private bool _isGrounded = true;
     private SprintAbility _sprintAbility;
+    private Player _player;
 
     private void Awake()
     {
@@ -45,6 +46,11 @@ public class PlayerMovement : MonoBehaviour
         _playerInputActions.Player.Sprint.Enable();
     }
 
+    private void HandleOnPlayerDeath(object sender, EventArgs e)
+    {
+        DisableMovement();
+    }
+
     private void HandleStaminaReachedThreshold(object sender, EventArgs e)
     {
         _canSprint = true;
@@ -63,9 +69,10 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Start()
     {
-        _isMoving = false;
         _gameInput = GameInput.Instance;
         _moveSpeed = walkSpeed;
+        _player = Player.Instance;
+        _player.OnPlayerDeath += HandleOnPlayerDeath;
     }
 
     private void Update()
@@ -131,12 +138,14 @@ public class PlayerMovement : MonoBehaviour
 
         if (inputVector != Vector2.zero)
         {
-            _rb.AddForce(inputDirection * _moveSpeed);
-            _isMoving = true;
-        } else
-        {
-            _isMoving= false;
+            _rb.AddForce(inputDirection * _moveSpeed * _moveSpeedMultiplier);
         }
     }
 
+    public void DisableMovement()
+    {
+        _moveSpeedMultiplier = 0f;
+        _playerInputActions.Player.Jump.Disable();
+        _playerInputActions.Player.Sprint.Disable();
+    }
 }
