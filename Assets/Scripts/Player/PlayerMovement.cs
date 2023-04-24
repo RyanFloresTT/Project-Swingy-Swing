@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform feetSpace;
 
     private float _moveSpeedMultiplier = 1f;
+    private float _cachedMoveSpeedMultiplier = 1f;
     private float _moveSpeed;
     private PlayerInputActions _playerInputActions;
     private GameInput _gameInput;
@@ -144,8 +145,22 @@ public class PlayerMovement : MonoBehaviour
 
     public void DisableMovement()
     {
+        _cachedMoveSpeedMultiplier = _moveSpeedMultiplier;
         _moveSpeedMultiplier = 0f;
         _playerInputActions.Player.Jump.Disable();
         _playerInputActions.Player.Sprint.Disable();
+    }
+
+    public void EnableMovement()
+    {
+        _moveSpeedMultiplier = _cachedMoveSpeedMultiplier;
+        _playerInputActions.Player.Jump.Enable();
+        _playerInputActions.Player.Sprint.Enable();
+    }
+
+    public void ChangePlayerSpeedMultiplier(float speedMultiplier)
+    {
+        _cachedMoveSpeedMultiplier = _moveSpeedMultiplier;
+        _moveSpeedMultiplier = speedMultiplier;
     }
 }
