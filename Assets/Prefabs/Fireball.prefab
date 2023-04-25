@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6558405233018396974
+--- !u!1 &8702591081402681824
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 791623931493116434}
-  - component: {fileID: 1841464134348358664}
-  - component: {fileID: 2747232099529759919}
-  - component: {fileID: 8793103710541139851}
+  - component: {fileID: 2971702237949772508}
+  - component: {fileID: 4201791841237363910}
+  - component: {fileID: 423852658573915233}
+  - component: {fileID: 6469020135353739077}
   m_Layer: 0
   m_Name: Fireball
   m_TagString: Untagged
@@ -19,29 +19,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &791623931493116434
+--- !u!4 &2971702237949772508
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6558405233018396974}
+  m_GameObject: {fileID: 8702591081402681824}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.369043, y: 2.54, z: -3.26}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalPosition: {x: 2.369043, y: 4.23, z: -3.26}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 3569841389180230889}
+  - {fileID: 8237706623864234622}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &1841464134348358664
+--- !u!54 &4201791841237363910
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6558405233018396974}
+  m_GameObject: {fileID: 8702591081402681824}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -51,38 +51,38 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!135 &2747232099529759919
+--- !u!135 &423852658573915233
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6558405233018396974}
+  m_GameObject: {fileID: 8702591081402681824}
   m_Material: {fileID: 13400000, guid: 59bac9375e1b54f4caad6f9f20d38758, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8793103710541139851
+--- !u!114 &6469020135353739077
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6558405233018396974}
+  m_GameObject: {fileID: 8702591081402681824}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96faff3edbdd5d24780f04003c5a186f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
---- !u!1001 &9078803417129083787
+--- !u!1001 &4478489840383991068
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 791623931493116434}
+    m_TransformParent: {fileID: 2971702237949772508}
     m_Modifications:
     - target: {fileID: 2925475929406372894, guid: 93493751bafa07b4ebec5bc245d5d2b4,
         type: 3}
@@ -172,7 +172,7 @@ PrefabInstance:
     - target: {fileID: 5509305661840162670, guid: 93493751bafa07b4ebec5bc245d5d2b4,
         type: 3}
       propertyPath: m_Name
-      value: CFXR Fireball + Fire Trail
+      value: CFXR Fireball + Fire Trail (1)
       objectReference: {fileID: 0}
     - target: {fileID: 5509305662281031646, guid: 93493751bafa07b4ebec5bc245d5d2b4,
         type: 3}
@@ -181,25 +181,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93493751bafa07b4ebec5bc245d5d2b4, type: 3}
---- !u!4 &3569841389180230889 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5509305661840162658, guid: 93493751bafa07b4ebec5bc245d5d2b4,
-    type: 3}
-  m_PrefabInstance: {fileID: 9078803417129083787}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3569841389478307692 stripped
+--- !u!1 &8237706623499049467 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5509305661550462183, guid: 93493751bafa07b4ebec5bc245d5d2b4,
     type: 3}
-  m_PrefabInstance: {fileID: 9078803417129083787}
+  m_PrefabInstance: {fileID: 4478489840383991068}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6594424874038292669
+--- !u!114 &3654006140898165408
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3569841389478307692}
+  m_GameObject: {fileID: 8237706623499049467}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
@@ -213,3 +207,9 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!4 &8237706623864234622 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5509305661840162658, guid: 93493751bafa07b4ebec5bc245d5d2b4,
+    type: 3}
+  m_PrefabInstance: {fileID: 4478489840383991068}
+  m_PrefabAsset: {fileID: 0}

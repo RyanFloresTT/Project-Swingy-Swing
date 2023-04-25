@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7288ad3703f6bfe418947bcf03f67c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireball: {fileID: 6558405233018396974, guid: e9b686a1de3b5674abf82df01b55fb74,
+  fireball: {fileID: 4794665714448725162, guid: 9962d4835f4fcf74c8a2b32ba325cbc5,
     type: 3}
   spawnPoint: {fileID: 1856668440}
   shotIntervalInSeconds: 3
@@ -3412,7 +3412,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1532354582}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10.97}
+  m_LocalPosition: {x: 0, y: 0, z: 15.97}
   m_LocalScale: {x: 5, y: 1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4708,7 +4708,7 @@ PrefabInstance:
     - target: {fileID: 791623931493116434, guid: e9b686a1de3b5674abf82df01b55fb74,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.54
+      value: 4.23
       objectReference: {fileID: 0}
     - target: {fileID: 791623931493116434, guid: e9b686a1de3b5674abf82df01b55fb74,
         type: 3}
