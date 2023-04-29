@@ -50,7 +50,7 @@ I had a fun time building the "Ability" system used for the "Big Jump" ability i
 
 ## Art
 
-Some of the art you see in the GIFs are from "Cartoon FX Remaster" [link](https://assetstore.unity.com/packages/vfx/particles/cartoon-fx-remaster-4010), and "World Materials Free" [link] (https://assetstore.unity.com/packages/2d/textures-materials/world-materials-free-150182). These are no longer present in the current build of the game since I didn't want to take up unwanted space and use HD graphics for this game anymore.
+Some of the art you see in the GIFs are from "Cartoon FX Remaster" [link](https://assetstore.unity.com/packages/vfx/particles/cartoon-fx-remaster-4010), and "World Materials Free" [link](https://assetstore.unity.com/packages/2d/textures-materials/world-materials-free-150182). These are no longer present in the current build of the game since I didn't want to take up unwanted space and use HD graphics for this game anymore.
 
 ## What I've Learned
 
