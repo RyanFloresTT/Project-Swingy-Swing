@@ -29,10 +29,14 @@ I am no longer working on this project. I made some good progress, but at the en
 * Have a few collectibles in each level that the player will have the option of collecting.
 
 ## GIFs
-[Grapple GIF](https://github.com/RyanFloresTT/Project-Swingy-Swing/blob/main/Images/FullConceptArt.png)
-[Jump Ability GIF](https://github.com/RyanFloresTT/Project-Swingy-Swing/blob/main/Images/FullConceptArt.png)
-[Lightning Trap GIF](https://github.com/RyanFloresTT/Project-Swingy-Swing/blob/main/Images/FullConceptArt.png)
-[Fireball + Health GIF](https://github.com/RyanFloresTT/Project-Swingy-Swing/blob/main/Images/FullConceptArt.png)
+[Grapple](https://github.com/RyanFloresTT/Project-Swingy-Swing/blob/main/GIFs/grapple.gif)
+
+[Jump Ability](https://github.com/RyanFloresTT/Project-Swingy-Swing/blob/main/GIFs/jumpability.gif)
+
+[Lightning Trap](https://github.com/RyanFloresTT/Project-Swingy-Swing/blob/main/GIFs/lightningtrap.gif)
+
+[Fireball + Health](https://github.com/RyanFloresTT/Project-Swingy-Swing/blob/main/GIFs/fireballhealth.gif)
+
 
 ## Built With
 
