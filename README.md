@@ -5,8 +5,7 @@ I am no longer working on this project. I made some good progress, but at the en
 ## Table of Contents
 * [Project Inception](https://github.com/RyanFloresTT/Project-Swingy-Swing/edit/main/README.md#project-inception)
 * [What I Want from this Project](https://github.com/RyanFloresTT/Project-Swingy-Swing/edit/main/README.md#what-i-want-from-this-project)
-* [Screenshots](https://github.com/RyanFloresTT/Project-Swingy-Swing/edit/main/README.md#screenshots)
-* [Screenshots](https://github.com/RyanFloresTT/Project-Swingy-Swing/edit/main/README.md#gifs)
+* [Gifs](https://github.com/RyanFloresTT/Project-Swingy-Swing/edit/main/README.md#gifs)
 * [Built With](https://github.com/RyanFloresTT/Project-Swingy-Swing/edit/main/README.md#built-with)
 * [Game Design](https://github.com/RyanFloresTT/Project-Swingy-Swing/edit/main/README.md#game-design)
 * [Main Mechanic](https://github.com/RyanFloresTT/Project-Swingy-Swing/edit/main/README.md#main-mechanic--grappling)
@@ -29,10 +28,11 @@ I am no longer working on this project. I made some good progress, but at the en
 * Have music and SFX for various actions (getting hit, grappling, collecting an item).
 * Have a few collectibles in each level that the player will have the option of collecting.
 
-## Screenshots
-[Concept Art](https://github.com/RyanFloresTT/Project-Swingy-Swing/blob/main/Images/FullConceptArt.png)
-
 ## GIFs
+[Grapple GIF](https://github.com/RyanFloresTT/Project-Swingy-Swing/blob/main/Images/FullConceptArt.png)
+[Jump Ability GIF](https://github.com/RyanFloresTT/Project-Swingy-Swing/blob/main/Images/FullConceptArt.png)
+[Lightning Trap GIF](https://github.com/RyanFloresTT/Project-Swingy-Swing/blob/main/Images/FullConceptArt.png)
+[Fireball + Health GIF](https://github.com/RyanFloresTT/Project-Swingy-Swing/blob/main/Images/FullConceptArt.png)
 
 ## Built With
 
@@ -50,7 +50,7 @@ I had a fun time building the "Ability" system used for the "Big Jump" ability i
 
 ## Art
 
-Some of the art you see in the GIFs are from "Cartoon FX Remaster" [link](https://assetstore.unity.com/packages/vfx/particles/cartoon-fx-remaster-4010), and "World Materials Free" [link](https://assetstore.unity.com/packages/2d/textures-materials/world-materials-free-150182). These are no longer present in the current build of the game since I didn't want to take up unwanted space and use HD graphics for this game anymore.
+Some of the art you see in the GIFs are from "Cartoon FX Remaster" [link](https://assetstore.unity.com/packages/vfx/particles/cartoon-fx-remaster-4010), and "World Materials Free" [link] (https://assetstore.unity.com/packages/2d/textures-materials/world-materials-free-150182). These are no longer present in the current build of the game since I didn't want to take up unwanted space and use HD graphics for this game anymore.
 
 ## What I've Learned
 
